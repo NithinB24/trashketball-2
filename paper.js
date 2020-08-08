@@ -1,0 +1,39 @@
+class Paper
+{
+    constructor(x,y,r)
+    {
+        var options={
+            isStatic:false,
+            restitution:1,
+            friction:0.5,
+            density:1.2
+
+            
+            }
+        this.x=x;
+        this.y=y;
+        this.r=r
+        this.body=Bodies.circle(this.x, this.y, this.r/2, options)
+        this.image=loadImage("paper.png");
+        this.image.scale=0.2;
+        World.add(world, this.body);
+
+    }
+    display()
+    {
+            
+            var paperpos=this.body.position;        
+
+            push()
+            translate(paperpos.x, paperpos.y);
+            rectMode(CENTER)
+            strokeWeight(3);
+            fill(255,255,255)
+            ellipse(0,0,this.r, this.r);
+            imageMode(CENTER);
+            image(this.image, 0, 0, this.width/2, this.height/2);
+            pop()
+            
+    }
+
+}
